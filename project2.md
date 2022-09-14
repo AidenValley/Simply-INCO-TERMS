@@ -32,7 +32,11 @@ In the space below:
 
 ----------------------------------------------------------
 ### User Stories
+As an Supply-chain industry beginner
 
+I want to understand the some crucial meanings of international commercial terminologies. 
+
+So that I can apply the studied terms and use under sales contracts.
 ----------------------------------------------------------
 ### Wireframes
 
