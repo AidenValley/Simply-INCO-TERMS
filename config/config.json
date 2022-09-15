@@ -2,7 +2,7 @@
   "development": {
     "username": "postgres",
     "password": "gk1126",
-    "database": "express_auth_dev",
+    "database": "simply_incoterms",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
