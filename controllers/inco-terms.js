@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
   res.render('incoterms/index', {layout:false});
 });
 
-
+router.use( express.static( "views" ));
 
 
 module.exports = router;
