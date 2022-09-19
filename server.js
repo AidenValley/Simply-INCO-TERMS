@@ -29,6 +29,9 @@ app.use(flash());            // flash middleware
 app.use(passport.initialize());      // Initialize passport
 app.use(passport.session());         // Add a session
 
+// USE
+app.use('/inco-terms', require('./controllers/inco-terms'));
+
 app.use((req, res, next) => {
   console.log(res.locals);
   res.locals.alerts = req.flash();
@@ -44,7 +47,8 @@ app.get('/', (req, res) => {
 // access to all of our auth routes GET /auth/login, GET 
 app.use('/auth', require('./controllers/auth'));
 
-// Add this above /auth controllers
+
+// Add this above / auth controllers
 app.get('/profile', isLoggedIn, (req, res) => {
   const { id, name, email } = req.user.get(); 
   res.render('profile', { id, name, email });
