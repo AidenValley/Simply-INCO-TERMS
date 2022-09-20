@@ -8,15 +8,9 @@ router.get('/', (req, res) => {
   const costs = fs.readFileSync('./costs.json');
   let costsData = JSON.parse(costs); // change the json data to an array of objects
   res.render('incoterms/index', {layout:false, myCosts: costsData})
-  // res.render('incoterms/index', {});
-  
-  
 });
 
-router.get('/', (req, res) => {
-  
-  // res.render('incoterms/index', {myCosts: costsData});
-})
+
 
 // router.get('/inco-terms/new', (req, res) => {
 //   res.render('inco-terms/new');

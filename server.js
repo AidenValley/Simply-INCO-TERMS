@@ -31,6 +31,7 @@ app.use(passport.session());         // Add a session
 
 // USE
 app.use('/inco-terms', require('./controllers/inco-terms'));
+app.use('/exw', require('./controllers/exw'));
 
 app.use((req, res, next) => {
   console.log(res.locals);
