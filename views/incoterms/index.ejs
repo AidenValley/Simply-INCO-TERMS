@@ -24,7 +24,9 @@
 <img src="../images/SHIPPING-PROCESS.png" alt="shipping-process">
 
 <section>  Who Pays for These? </section>
-
+<% myCosts.forEach((cost, index) => { %>
+  <li><%= cost.name %> : <%= cost.type %> -> <%= cost.image %> </li>
+<% })  %> 
 <!-- <form method="GET" action="/">
   <label for="birdType">Type</label>
   <input id="birdType" type="text" name="type">
