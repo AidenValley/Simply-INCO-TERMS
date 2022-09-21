@@ -35,7 +35,7 @@ app.use('/exw', require('./controllers/exw'));
 app.use('/fob', require('./controllers/fob'));
 app.use('/cif', require('./controllers/cif'));
 app.use('/dap', require('./controllers/dap'));
-// app.use('/ddp',require('./controllers/ddp'));
+app.use('/ddp',require('./controllers/ddp'));
 
 app.use((req, res, next) => {
   console.log(res.locals);
