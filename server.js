@@ -29,22 +29,12 @@ app.use(flash());            // flash middleware
 app.use(passport.initialize());      // Initialize passport
 app.use(passport.session());         // Add a session
 
-// USE
-app.use('/inco-terms', require('./controllers/inco-terms'));
-app.use('/exw', require('./controllers/exw'));
-app.use('/fob', require('./controllers/fob'));
-app.use('/cif', require('./controllers/cif'));
-app.use('/dap', require('./controllers/dap'));
-app.use('/ddp', require('./controllers/ddp'));
-app.use('/news',require('./controllers/news'));
-
 app.use((req, res, next) => {
   console.log(res.locals);
   res.locals.alerts = req.flash();
   res.locals.currentUser = req.user;
   next();
 }) // next 
-
 
 app.get('/', (req, res) => {
   res.render('index');
@@ -60,9 +50,19 @@ app.get('/profile', isLoggedIn, (req, res) => {
   res.render('profile', { id, name, email });
 });
 
+// USE
+app.use('/inco-terms', require('./controllers/inco-terms'));
+app.use('/exw', require('./controllers/exw'));
+app.use('/fob', require('./controllers/fob'));
+app.use('/cif', require('./controllers/cif'));
+app.use('/dap', require('./controllers/dap'));
+app.use('/ddp', require('./controllers/ddp'));
+app.use('/news',require('./controllers/news'));
+
 const PORT = process.env.PORT || 8001;
 const server = app.listen(PORT, () => {
   console.log(`🎧 You're listening to the smooth sounds of port ${PORT} 🎧`);
 });
+
 
 module.exports = server;
