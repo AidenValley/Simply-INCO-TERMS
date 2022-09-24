@@ -27,4 +27,16 @@ router.get('/:id', isLoggedIn, async (req, res) => {
   })
 });
 
+router.delete('/:id', isLoggedIn, async (req, res) => {
+  let newsDeleted = await db.news.destroy({
+    where: { id: req.params.id }
+  });
+  console.log('This is Delete Route');
+  console.log('Amount of newss deleted', newsDeleted);
+
+  res.redirect('/favorites');
+})
+
+
+
 module.exports = router;

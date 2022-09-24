@@ -10,5 +10,9 @@
         <a href="/favorites/<%= a.id %>"> More Info </a>
         <br>
       </h2>
+      <form method="POST" action="/favorites/<%= a.id %>/?_method=DELETE">
+        <input type="submit" value="Delete">
+        <button type="submit" class="btn btn-sm btn-outline-secondary">Remove</button>
+      </form>
     </div>
   <% }) %>
