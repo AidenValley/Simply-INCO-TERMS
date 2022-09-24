@@ -5,9 +5,9 @@
     <div class="well">
       <h2>
         <strong><%= a.title %></strong>
-        <p><%= a.summary %> </p>
+        <p><%= a.summary.slice(0, 99) + '......' %> </p>
         <small>by <%= a.author %></small>
-        <a href="/favorites/<%= a.userId %>"> More Info </a>
+        <a href="/favorites/<%= a.id %>"> More Info </a>
         <br>
       </h2>
     </div>
