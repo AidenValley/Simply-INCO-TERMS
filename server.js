@@ -58,6 +58,7 @@ app.use('/cif', require('./controllers/cif'));
 app.use('/dap', require('./controllers/dap'));
 app.use('/ddp', require('./controllers/ddp'));
 app.use('/news',isLoggedIn, require('./controllers/news'));
+app.use('/favorites',isLoggedIn, require('./controllers/favorites'));
 
 const PORT = process.env.PORT || 8004;
 const server = app.listen(PORT, () => {

@@ -42,21 +42,13 @@ router.post('/favorites', isLoggedIn, async (req, res) => {
     updatedAt: date,
     userId: req.user.id
   }).then(function (news) {
-      res.redirect('/news/favorites');
+      res.render('/news/favorites');
     }).catch(function (error) {
       console.log(error);
       req.flash('error', 'cannot add');
       res.redirect('/news');
     });
 });
-router.get('/favorites', isLoggedIn, async (req, res) => {
-  let news = await db.news.findAll();
-  // where: {
-  //   id: req.user.id
-  // }
-  console.log(news);
-  res.render('news/favorites', { news: news });
-})
 
 
 
