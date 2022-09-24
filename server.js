@@ -57,9 +57,9 @@ app.use('/fob', require('./controllers/fob'));
 app.use('/cif', require('./controllers/cif'));
 app.use('/dap', require('./controllers/dap'));
 app.use('/ddp', require('./controllers/ddp'));
-app.use('/news',require('./controllers/news'));
+app.use('/news',isLoggedIn, require('./controllers/news'));
 
-const PORT = process.env.PORT || 8001;
+const PORT = process.env.PORT || 8004;
 const server = app.listen(PORT, () => {
   console.log(`🎧 You're listening to the smooth sounds of port ${PORT} 🎧`);
 });

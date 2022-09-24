@@ -3,12 +3,16 @@ const router = express.Router();
 const fs = require('fs');
 const axios = require("axios");
 const db = require('../models');
+const isLoggedIn = require('../middleware/isLoggedIn');
 
-router.get('/', (req, res) => {
+
+
+
+router.get('/', isLoggedIn, (req, res) => {
   res.render('news/index', {news: null});
 });
 
-router.post('/search', (req, res) => {
+router.post('/search', isLoggedIn, (req, res) => {
   const options = {
     method: 'GET',
     url: 'https://api.newscatcherapi.com/v2/search',
@@ -27,22 +31,33 @@ router.post('/search', (req, res) => {
   });
 })
 
-router.post('/favorites', (req, res) => {
+router.post('/favorites', isLoggedIn, async (req, res) => {
   const date = new Date().toISOString();
-  db.news.create({
+  console.log( 'hey', req.body );
+  const newNews = await db.news.create({
     title: req.body.title,
     summary: req.body.summary,
     author: req.body.author,
     createdAt: date,
-    updatedAt: date
+    updatedAt: date,
+    userId: req.user.id
   }).then(function (news) {
-    res.render('news/favorites');
-  }).catch(function (error) {
-    req.flash('error', 'cannot add');
-    res.redirect('/news');
+      res.redirect('/news/favorites');
+    }).catch(function (error) {
+      console.log(error);
+      req.flash('error', 'cannot add');
+      res.redirect('/news');
+    });
+});
+router.get('/favorites', isLoggedIn, async (req, res) => {
+  let news = await db.news.findAll({
+    where: {
+      id: req.user.id
+    }
   })
+  console.log(news);
+  res.render('news/favorites', { news: news });
 })
-
 
 
 

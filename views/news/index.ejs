@@ -21,6 +21,7 @@
       <div class="well">
         <h2>
           <a href="/news/<%= a._id %>"><%= a.title %></a>
+          <p><%= a.summary %> </p>
           <small>by <%= a.author %></small>
         </h2>
         <p>
@@ -30,7 +31,8 @@
           <input type="text" name="title" hidden value="<%= a.title%>">
           <input type="text" name="summary" hidden value="<%= a.summary%>">
           <input type="text" name="author" hidden value="<%= a.author%>">
-          <button type="submit"> ADD </button>
+          <input type="text" value="<%= currentUser.id %>" name="userID" hidden>
+          <button type="submit"> Add to Favorites </button>
         </form>
       </div>
     <% }) %>
