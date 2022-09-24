@@ -50,11 +50,10 @@ router.post('/favorites', isLoggedIn, async (req, res) => {
     });
 });
 router.get('/favorites', isLoggedIn, async (req, res) => {
-  let news = await db.news.findAll({
-    where: {
-      id: req.user.id
-    }
-  })
+  let news = await db.news.findAll();
+  // where: {
+  //   id: req.user.id
+  // }
   console.log(news);
   res.render('news/favorites', { news: news });
 })
