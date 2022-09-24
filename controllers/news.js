@@ -55,7 +55,7 @@ router.post('/favorites', isLoggedIn, async (req, res) => {
     updatedAt: date,
     userId: req.user.id
   }).then(function (news) {
-      res.render('/news/favorites');
+      res.redirect('/news');
     }).catch(function (error) {
       console.log(error);
       req.flash('error', 'cannot add');

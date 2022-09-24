@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       models.news.belongsTo(models.user);
+      models.news.hasMany(models.comments);
     }
   }
   news.init({
