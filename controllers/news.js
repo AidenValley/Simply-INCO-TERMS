@@ -12,6 +12,19 @@ router.get('/', isLoggedIn, (req, res) => {
   res.render('news/index', {news: null});
 });
 
+router.get('/:id', isLoggedIn, async (req, res) => {
+  let news = await db.news.findOne({
+    where: { id: req.params.id },
+  })
+  .then((news) => {
+    console.log('working');
+    res.render('news/show', { news: news })
+  })
+  .catch((error) => {
+    console.log(error);
+  })
+});
+
 router.post('/search', isLoggedIn, (req, res) => {
   const options = {
     method: 'GET',

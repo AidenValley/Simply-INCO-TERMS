@@ -4,9 +4,11 @@
   <% news.forEach((a) => { %>
     <div class="well">
       <h2>
-        <a href="/news/<%= a._id %>"><%= a.title %></a>
+        <strong><%= a.title %></strong>
         <p><%= a.summary %> </p>
         <small>by <%= a.author %></small>
+        <a href="/favorites/<%= a.userId %>"> More Info </a>
+        <br>
       </h2>
     </div>
   <% }) %>

@@ -13,6 +13,18 @@ router.get('/', isLoggedIn, async (req, res) => {
   console.log(news);
   res.render('news/favorites', { news: news });
 })
-
+router.get('/:id', isLoggedIn, async (req, res) => {
+  let news = await db.news.findOne({
+    where: { id: req.params.id },
+  })
+  .then((news) => {
+    console.log(news);
+    res.render('news/show', { news: news })
+  })
+  .catch((error) => {
+    console.log(error);
+    req.flash('error', 'not found');
+  })
+});
 
 module.exports = router;
