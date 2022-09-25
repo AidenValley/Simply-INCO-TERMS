@@ -10,7 +10,7 @@ router.get('/', isLoggedIn, async (req, res) => {
   // where: {
   //   id: req.user.id
   // }
-  console.log(news);
+  // console.log(news);
   res.render('news/favorites', { news: news });
 });
 
@@ -30,8 +30,13 @@ router.get('/:id', isLoggedIn, async (req, res) => {
     where: { id: req.params.id },
   })
   .then((news) => {
-    console.log(news);
-    res.render('news/show', { news: news });
+    // console.log(comments);
+    let comments = db.comments.findAll({
+      where: {newsId: req.params.id}
+    }).then((comments) => {
+      console.log(comments[0]);
+      res.render('news/show', { comments: comments, news: news });
+    })
   })
   .catch((error) => {
     console.log(error);
@@ -43,8 +48,10 @@ router.post('/:id/comments', isLoggedIn, async (req, res) => {
   const createdDate = new Date().toISOString();
   let news = await db.news.findOne({
     where: { id: req.params.id },
+    // include: [db.news, db.users]
   })
   .then((news) => {
+    if (!news) throw Error();
     db.comments.create({
       name: req.body.userName,
       content: req.body.commentText,

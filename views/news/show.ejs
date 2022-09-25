@@ -1,24 +1,21 @@
-<h1>Individual News</h1>
+<h2>Individual News</h2>
 
-<h2><%= news.title %> </h2>
-<small><%= news.summary %> </small>
+<h3><%= news.title %> </h3>
+<h4><%= news.summary %> </h4>
 <strong><%= news.author %> </strong>
 
+  <form method="POST" action="/favorites/<%= news.id %>/comments">
+    <label for="commentText">Comment</label>
+    <input name="commentText" type="text" placeholder="Any Related Comments">
+    <button type="submit">Submit</button>
+  </form>
 
-<% if(news && Array.isArray(news) && news.length > 0) {%>
-<div class="well">
-  <% news.comments.forEach((a) => { %>
-    <p><%= a.name %> </p>
-    <p><%= a.content %> </p>
-  </div>
-    
-<% }) %> 
-<% } %>
-<form method="POST" action="./<%= news.id %>/comments">
-  <label for="userName">User Name</label>
-  <input name="userName" type="text">
-  <br>
-  <label for="commentText">Comment</label>
-  <input name="commentText" type="text">
-  <button type="submit">Submit</button>
-</form>
+  <% if(comments && Array.isArray(comments) && comments.length > 0) {%> 
+    <% comments.forEach((a) => { %>
+      <div class="well">
+        <h2>
+          <p><%= a.content %> </p>
+        </h2>
+      </div>
+    <% }) %>
+    <% } %> 
