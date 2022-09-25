@@ -13,6 +13,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       models.user.hasMany(models.news);
+      models.user.hasMany(models.comments);
     }
   };
   user.init({

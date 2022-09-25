@@ -43,15 +43,14 @@ router.post('/:id/comments', isLoggedIn, async (req, res) => {
   const createdDate = new Date().toISOString();
   let news = await db.news.findOne({
     where: { id: req.params.id },
-    include: [db.comments]
   })
   .then((news) => {
-    db.comment.create({
+    db.comments.create({
       name: req.body.userName,
       content: req.body.commentText,
       createdAt: createdDate,
       updatedAt: createdDate,
-      userId: req.user.id
+      newsId: news.id
     }).then(comment => {
       res.redirect(`/favorites/${req.params.id}`);
     })
@@ -60,6 +59,16 @@ router.post('/:id/comments', isLoggedIn, async (req, res) => {
     console.log(error);
   })
 })
+
+// app.put('/:id/comments', isLoggedIn, async (req, res) => {
+//   const usersUpdated = await db.user.update({
+//       name: req.body.name,
+//     }, {
+//       where: {
+//         id: req.params.id
+//       }
+//   })
+// })
 
 
 module.exports = router;

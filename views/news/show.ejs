@@ -4,13 +4,21 @@
 <small><%= news.summary %> </small>
 <strong><%= news.author %> </strong>
 
-<div class="comments">
-  <form method="POST" action="./<%= news.id %>/comments">
-    <label for="userName">User Name</label>
-    <input name="userName" type="text">s
-    <br>
-    <label for="commentText">Comment</label>
-    <input name="commentText" type="text">
-    <button type="submit">Submit</button>
-  </form>
-</div>
+
+<% if(news && Array.isArray(news) && news.length > 0) {%>
+<div class="well">
+  <% news.comments.forEach((a) => { %>
+    <p><%= a.name %> </p>
+    <p><%= a.content %> </p>
+  </div>
+    
+<% }) %> 
+<% } %>
+<form method="POST" action="./<%= news.id %>/comments">
+  <label for="userName">User Name</label>
+  <input name="userName" type="text">
+  <br>
+  <label for="commentText">Comment</label>
+  <input name="commentText" type="text">
+  <button type="submit">Submit</button>
+</form>

@@ -11,13 +11,14 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       models.comments.belongsTo(models.news);
+      models.comments.belongsTo(models.user);
     }
   }
   comments.init({
     name: DataTypes.STRING,
     content: DataTypes.TEXT,
     userId: DataTypes.INTEGER,
-    
+    newsId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'comments',
