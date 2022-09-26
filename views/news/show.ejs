@@ -2,7 +2,7 @@
 
 <h3><%= news.title %> </h3>
 <h4><%= news.summary %> </h4>
-<strong><%= news.author %> </strong>
+<strong>Author: <%= news.author %> </strong>
 
   <form method="POST" action="/favorites/<%= news.id %>/comments">
     <label for="commentText">Comment</label>
@@ -17,5 +17,9 @@
           <p><%= a.content %> </p>
         </h2>
       </div>
+      <form method="POST" action="/favorites/ <%= a.id %>/?_method=DELETE"> 
+        <button type="submit" class="btn btn-sm btn-outline-secondary">Remove</button>
+      </form>
     <% }) %>
     <% } %> 
+

@@ -7,11 +7,12 @@ const isLoggedIn = require('../middleware/isLoggedIn');
 
 
 
-
+// GET Route to access to the News Page
 router.get('/', isLoggedIn, (req, res) => {
   res.render('news/index', {news: null});
 });
 
+// GET Route to have news to display on the page
 router.get('/:id', isLoggedIn, async (req, res) => {
   let news = await db.news.findOne({
     where: { id: req.params.id },
@@ -25,6 +26,7 @@ router.get('/:id', isLoggedIn, async (req, res) => {
   })
 });
 
+// POST route to fetch the API key
 router.post('/search', isLoggedIn, (req, res) => {
   const options = {
     method: 'GET',
@@ -44,6 +46,7 @@ router.post('/search', isLoggedIn, (req, res) => {
   });
 })
 
+// POST Route to add to Favorites
 router.post('/favorites', isLoggedIn, async (req, res) => {
   const date = new Date().toISOString();
   console.log( 'hey', req.body );
@@ -62,8 +65,6 @@ router.post('/favorites', isLoggedIn, async (req, res) => {
       res.redirect('/news');
     });
 });
-
-
 
 
 module.exports = router;

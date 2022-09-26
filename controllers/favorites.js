@@ -5,23 +5,16 @@ const axios = require("axios");
 const db = require('../models');
 const isLoggedIn = require('../middleware/isLoggedIn');
 
+// GET Route to have favorites news
 router.get('/', isLoggedIn, async (req, res) => {
-  let news = await db.news.findAll();
-  // where: {
-  //   id: req.user.id
-  // }
-  // console.log(news);
-  res.render('news/favorites', { news: news });
-});
-
-router.delete('/:id', isLoggedIn, async (req, res) => {
-  let newsDeleted = await db.news.destroy({
-    where: { id: req.params.id }
+  let news = await db.news.findAll()
+  .then((news) => {
+    res.render('news/favorites', { news: news });
+  })
+  .catch((error) => {
+    console.log(error);
+    req.flash('error', 'not found');
   });
-  console.log('This is Delete Route');
-  console.log('Amount of newss deleted', newsDeleted);
-
-  res.redirect('/favorites');
 });
 
 // GET Route to show ejs
@@ -44,11 +37,11 @@ router.get('/:id', isLoggedIn, async (req, res) => {
   });
 });
 
+// POST route for comments
 router.post('/:id/comments', isLoggedIn, async (req, res) => {
   const createdDate = new Date().toISOString();
   let news = await db.news.findOne({
     where: { id: req.params.id },
-    // include: [db.news, db.users]
   })
   .then((news) => {
     if (!news) throw Error();
@@ -64,18 +57,24 @@ router.post('/:id/comments', isLoggedIn, async (req, res) => {
   })
   .catch((error) => {
     console.log(error);
+    req.flash('error', 'not found');
   })
 })
 
-// app.put('/:id/comments', isLoggedIn, async (req, res) => {
-//   const usersUpdated = await db.user.update({
-//       name: req.body.name,
-//     }, {
-//       where: {
-//         id: req.params.id
-//       }
-//   })
-// })
+// DELETE Route for News & Comments
+router.delete('/:id', isLoggedIn, async (req, res) => {
+  let commentsDeleted = await db.comments.destroy({
+    where: { id: req.params.id }
+  });
+  let newsDeleted = await db.news.destroy({
+    where: { id: req.params.id }
+  });
 
+  console.log('This is Delete Route');
+  console.log('Amount of comments deleted', commentsDeleted);
+  console.log('Amount of news deleted', newsDeleted);
+
+  res.redirect('/favorites');
+});
 
 module.exports = router;
