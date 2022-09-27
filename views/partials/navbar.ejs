@@ -1,28 +1,38 @@
-<nav class="navbar navbar-default" role="navigation">
-  <div class="container">
-    
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <nav class="navbar navbar-default navbar-fixed-top">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>                        
-        </button>
-      <ul class="nav navbar-nav navbar-right">
-        <a class="navbar-brand" href="/">Home</a>
-        <a class="navbar-brand" href="/inco-terms">Inco-Terms</a>
-        <a class="navbar-brand" href="/news">News</a>
-        <a class="navbar-brand" href="/favorites">News Favorites</a>
+<body>
+<link href="navbar.css" rel="stylesheet">
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">Simply SupplyChain</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav me-auto mb-2 mb-md-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/inco-terms">Inco-Terms</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="/news">News</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="/favorites">News Favorites</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav mb-2 mb-md-0">
+        <div class="d-flex float-right col-16">
+          <li class="me-auto nav-item">
+            <a class="nav-link" href="/profile">Profile</a>
+          </li>
+          <li class="me-auto nav-item float-right">
+            <a class="nav-link" href="/auth/signup">Signup</a>
+          </li>
+          <li class="me-auto nav-item" >
+            <a class="nav-link" href="/auth/login">Login</a>
+          </li>
+        </div>
       </ul>
     </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse navbar-ex1-collapse">
-      <ul class="nav navbar-nav">
-        <li><a href="">News</a></li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
   </div>
 </nav>
+</body>
 
