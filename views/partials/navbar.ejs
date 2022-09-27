@@ -19,16 +19,22 @@
         </li>
       </ul>
       <ul class="navbar-nav mb-2 mb-md-0">
-        <div class="d-flex float-right col-16">
-          <li class="me-auto nav-item">
-            <a class="nav-link" href="/profile">Profile</a>
-          </li>
+        <div class="d-flex flex-row-reverse float-right col-16">
+          <% if(!currentUser) { %> 
           <li class="me-auto nav-item float-right">
             <a class="nav-link" href="/auth/signup">Signup</a>
           </li>
           <li class="me-auto nav-item" >
             <a class="nav-link" href="/auth/login">Login</a>
           </li>
+          <% }else { %>
+            <li class="me-auto nav-item float-right">
+              <a class="nav-link" href="/auth/logout">Logout</a>
+            </li>
+            <li class="me-auto nav-item" >
+              <a class="nav-link" href="/profile">Profile</a>
+            </li>
+          <% } %>  
         </div>
       </ul>
     </div>
