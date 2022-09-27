@@ -1,3 +1,4 @@
+*** INCOTERM PAGE ORIGINAL 
 <h1>Inco-Terms</h1>
 
 <h2>Inco-Terms: International Commercial Terms</h2>
@@ -45,3 +46,26 @@
 </div>
 
 </form> -->
+
+</div>
+  </body>
+</html>
+
+<h1>EXW</h1>
+<h2>EX-WORKS</h2>
+
+<h3>
+  Buyer almost pays for everything starting from the seller's country
+  designated location all the way to the importing country. Seller favors
+  this type of inco-term simply because seller would have more control 
+  over the freight expense and low liability to the seller. 
+</h3>
+
+<img src="\assets\brand\EX-WORKS-IMAGE.jpg" alt="EX-WORKS">
+
+
+
+<div>
+  <button><a href="/inco-terms">Back</a></button>
+  <button><a href="/">Home</a></button>
+</div>
