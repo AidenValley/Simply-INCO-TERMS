@@ -11,7 +11,7 @@
   ### https://simply-supplychain.herokuapp.com/
 
 ## Technologies 
-  ### This project has utilized technology stacks such as NodeJS, Express, EJS, BootStrap, and hosted in Heroku. 
+  ### This project has utilized technology stacks such as NodeJS, Express, EJS, BootStrap, PostgreSQL, Sequelize and hosted in Heroku. 
 
 ## PseudoCode Structures
  ### ![PROJECT_INFRASTRUCTURE](https://user-images.githubusercontent.com/107300143/192682067-5edc2742-fbdd-4a9c-8a70-ff3be2ed891d.png)
