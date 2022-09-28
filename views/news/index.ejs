@@ -6,14 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
 </head>
-<body class="p-lg-5">
+<body class="p-lg-5 text-bg-dark">
   <!-- Jumbotron -->
-  <div id="intro" class="p-5 text-center bg-light ">
+  <div id="intro" class="p-5 text-center text-bg-dark">
     <h1 class="mb-3 h2">Simply SupplyChain News</h1>
     <p class="mb-3">Find the Most Relevant Supply Chain News That You Can Connect With the Inco-Terms.</p>
     <div class="well">
       <form method="POST" action="./news/search">
-          <input name="searchTerm" type="text" placeholder="Type imports or exports">
+          <input class="form-inline" name="searchTerm" type="text" placeholder="Type Imports or Exports">
           <button class="btn btn-primary" type="submit">Search News</button>
       </form>
     </div>
@@ -30,11 +30,11 @@
       <h4 class="mb-5"><strong>Latest News</strong></h4>
       <% if(news && Array.isArray(news) && news.length > 0) {%> 
       <% news.forEach(function(a) { %>
-      <div class="panel-group card" id="accordion_@i">
+      <div class="panel-group card border-secondary mb-3 text-bg-dark" id="accordion_@i">
         <div class="panel panel-default" id="panel_@i">
                <div class="panel-heading">
                      <h4 class="panel-title">
-                           <a data-toggle="collapse" data-target="#collapseOne_@i" href="/news/<%= a._id %>">>
+                           <a data-toggle="collapse" data-target="#collapseOne_@i" href="/news/<%= a._id %>">
                             <%= a.title %>
                             </a>
                             <p><%= a.summary.slice(0, 120) + "........" %></p>

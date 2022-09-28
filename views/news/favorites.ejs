@@ -1,17 +1,43 @@
-<h1>Favorite News</h1>
+<body class="text-bg-dark">
+
+<h1 class="p-lg-5 ">Favorite News</h1>
 
 
-  <% news.forEach((a) => { %>
-    <div class="well">
-      <h2>
-        <strong><%= a.title %></strong>
-        <p><%= a.summary.slice(0, 99) + '......' %> </p>
-        <small>by <%= a.author %></small>
-        <a href="/favorites/<%= a.id %>"> More Info </a>
-        <br>
-      </h2>
-      <form method="POST" action="/favorites/<%= a.id %>/?_method=DELETE"> 
-        <button type="submit" class="btn btn-sm btn-outline-secondary">Remove</button>
-      </form>
-    </div>
-  <% }) %>
+
+<% news.forEach((a) => { %>
+<section class="wrapper">
+  <div class="container-fostrap">
+      <div class="content">
+          <div class="container">
+              <div class="row">
+                  <div class="col-xs-12">
+                      <div class="card">
+                          <div class="card-content text-bg-dark">
+                              <h4 class="card-title">
+                                <%= a.title %>
+                                </a>
+                              </h4>
+                              <p class="">
+                                <%= a.summary.slice(0, 199) + "........" %>
+                              </p>
+                              <p class="">by: <%= a.author %></p>
+                          </div>
+                          <div class="card-read-more text-bg-dark">
+                            <button class="btn btn-md btn-outline-primary"><a href="/favorites/<%= a.id %>"> Read More </a></button>
+                            <form method="POST" action="/favorites/<%= a.id %>/?_method=DELETE"> 
+                              <button type="submit" class="btn btn-md btn-outline-primary">Remove</button>
+                            </form>
+                          </div>
+                      </div>
+                  </div>
+                  
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+<% }) %>
+    
+</body>
