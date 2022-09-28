@@ -17,7 +17,7 @@ router.get('/:id', isLoggedIn, async (req, res) => {
   let news = await db.news.findOne({
     where: { id: req.params.id },
   })
-  .then((news) => {
+  .try((news) => {
     console.log('working');
     res.render('news/show', { news: news })
   })
@@ -57,13 +57,13 @@ router.post('/favorites', isLoggedIn, async (req, res) => {
     createdAt: date,
     updatedAt: date,
     userId: req.user.id
-  }).then(function (news) {
+  }).try(function (news) {
       res.redirect('/news');
-    }).catch(function (error) {
+  }).catch(function (error) {
       console.log(error);
       req.flash('error', 'cannot add');
       res.redirect('/news');
-    });
+  });
 });
 
 

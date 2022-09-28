@@ -69,7 +69,7 @@ router.delete('/:id', isLoggedIn, async (req, res) => {
   let newsDeleted = await db.news.destroy({
     where: { id: req.params.id }
   });
-
+  
   console.log('This is Delete Route');
   console.log('Amount of comments deleted', commentsDeleted);
   console.log('Amount of news deleted', newsDeleted);
