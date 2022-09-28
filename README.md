@@ -94,3 +94,4 @@ card USER EXPERIENCE
 - [ ] Content is responsive to screen size changes
 - [ ] No glaring alignment or grid errors
 
+### Possible Improvements
