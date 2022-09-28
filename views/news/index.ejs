@@ -1,46 +1,69 @@
-<h2> Simply SupplyChain News</h2>
-
-<div class="well">
-  <form method="POST" action="./news/search">
-      <input name="searchTerm" type="text" placeholder="Type imports or exports">
-      <button class="btn btn-primary" type="submit">Search News</button>
-  </form>
-</div>
-
-<div class="row">
-  <div class="col-sm-8">
-    <div class="row">
-      <div class="col-xs-12">
-        <img class="hero" src="">
-      </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+</head>
+<body class="p-lg-5">
+  <!-- Jumbotron -->
+  <div id="intro" class="p-5 text-center bg-light ">
+    <h1 class="mb-3 h2">Simply SupplyChain News</h1>
+    <p class="mb-3">Find the Most Relevant Supply Chain News That You Can Connect With the Inco-Terms.</p>
+    <div class="well">
+      <form method="POST" action="./news/search">
+          <input name="searchTerm" type="text" placeholder="Type imports or exports">
+          <button class="btn btn-primary" type="submit">Search News</button>
+      </form>
     </div>
-    <h2>Latest News</h2>
-    
-    <% if(news && Array.isArray(news) && news.length > 0) {%> 
-    <% news.forEach(function(a) { %>
-      <div class="well">
-        <h2>
-          <a href="/news/<%= a._id %>"><%= a.title %></a>
-          <p><%= a.summary %> </p>
-          <small>by <%= a.author %></small>
-        </h2>
-        <p>
-          <strong><%= a.published_date.split(' ')[0] %></strong>
-        </p>
-        <form action="./favorites" method="POST">
-          <input type="text" name="title" hidden value="<%= a.title%>">
-          <input type="text" name="summary" hidden value="<%= a.summary%>">
-          <input type="text" name="author" hidden value="<%= a.author%>">
-          <input type="text" value="<%= currentUser.id %>" name="userID" hidden>
-          <button type="submit"> Add to Favorites </button>
-        </form>
-      </div>
-    <% }) %>
-    <% } %> 
-
   </div>
-  <div class="col-sm-4">
-    <h2>About</h2>
-    <p>Simply SupplyChain is a.</p>
+  <!-- Jumbotron -->
+  </header>
+  <!--Main Navigation-->
+  
+  <!--Main layout-->
+  <main class="my-5">
+  <div class="container">
+    <!--Section: Content-->
+    <section class="text-center">
+      <h4 class="mb-5"><strong>Latest News</strong></h4>
+      <% if(news && Array.isArray(news) && news.length > 0) {%> 
+      <% news.forEach(function(a) { %>
+      <div class="panel-group card" id="accordion_@i">
+        <div class="panel panel-default" id="panel_@i">
+               <div class="panel-heading">
+                     <h4 class="panel-title">
+                           <a data-toggle="collapse" data-target="#collapseOne_@i" href="/news/<%= a._id %>">>
+                            <%= a.title %>
+                            </a>
+                            <p><%= a.summary.slice(0, 120) + "........" %></p>
+                            <p>by: <%= a.author %></p>
+                            <strong>Published Date: <%= a.published_date.split(' ')[0] %></strong>
+                      </h4>
+                </div>
+                      <div class="panel-body">
+                        <form action="./favorites" method="POST">
+                          <input type="text" name="title" hidden value="<%= a.title%>">
+                          <input type="text" name="summary" hidden value="<%= a.summary%>">
+                          <input type="text" name="author" hidden value="<%= a.author%>">
+                          <input type="text" value="<%= currentUser.id %>" name="userID" hidden>
+                          <button class="btn btn-primary" type="submit"> Add to Favorites </button>
+                        </form>
+                      </div>
+        </div>
+      <% }) %>
+      <% } %> 
   </div>
-</div>
+  
+  
+  
+  
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    © 2022 Simply SupplyChain
+  </div>
+  <!-- Copyright -->
+  
+  </body>
+</html>
