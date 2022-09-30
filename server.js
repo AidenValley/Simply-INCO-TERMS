@@ -61,6 +61,9 @@ app.use('/ddp', require('./controllers/ddp'));
 app.use('/news',isLoggedIn, require('./controllers/news'));
 app.use('/favorites',isLoggedIn, require('./controllers/favorites'));
 
+app.get('/*', (req, res) => {
+  res.render('main/404');
+})
 
 const PORT = process.env.PORT || 3000;
 const server = app.listen(PORT, () => {
