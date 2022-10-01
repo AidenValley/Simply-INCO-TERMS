@@ -18,6 +18,7 @@ router.get('/:id', isLoggedIn, async (req, res) => {
     where: { id: req.params.id },
   })
   .then((news) => {
+    console.log('working');
     res.render('news/show', { news: news })
   })
   .catch((error) => {
