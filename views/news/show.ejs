@@ -21,7 +21,11 @@
       <div class="row">
         <div class="col">
           <div class="md-form mt-0">
+
             <label for="commentText">Comment</label>
+
+            <label name="commentText"for="commentText">Comment</label>
+
             <input type="text" id="form1" name= "commentText" class="form-control" placeholder="Any Related Comments">
           </div>
         </div>
@@ -39,7 +43,7 @@
 
   <% if(comments && Array.isArray(comments) && comments.length > 0) {%> 
     <% comments.forEach((a) => { %>
-      <div class="well">
+      <div class="well text-light bg-dark">
         <h2>
           <p><%= a.content %> </p>
         </h2>
