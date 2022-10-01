@@ -7,6 +7,7 @@ const flash = require('connect-flash');
 const passport = require('./config/ppConfig');
 const methodOverride = require('method-override');
 const isLoggedIn = require('./middleware/isLoggedIn');
+const db = require('./models');
 
 const SECRET_SESSION = process.env.SECRET_SESSION;
 console.log('THIS IS A SECRET', SECRET_SESSION);
@@ -50,6 +51,56 @@ app.get('/profile', isLoggedIn, (req, res) => {
   const { id, name, email } = req.user.get(); 
   res.render('profile', { id, name, email });
 });
+
+// GET router for Profile
+app.get('/profile/edit', isLoggedIn, (req, res) => {
+  res.render('edit');
+});
+
+// PUT Route for Profile editing
+app.put('/profile/:id', async (req, res) => {
+  try {
+      const foundUser = await db.user.findOne({ where: { email: req.body.email }});
+      console.log(foundUser);
+      if (!foundUser) {
+        const usersUpdated = await db.user.update({
+          email: req.body.email,
+          name: req.body.name
+        }, {
+          where: {
+            id: req.params.id
+          }
+        });
+
+        res.redirect('/profile'); // route
+      } else if (foundUser.email && foundUser.id !== req.user.id) {
+        req.flash('error', 'Email already exists. Please try again.');
+        res.redirect('/profile');
+      } else {
+        const usersUpdated = await db.user.update({
+          email: req.body.email,
+          name: req.body.name
+        }, {
+          where: {
+            id: req.params.id
+          }
+        });
+
+        console.log('********** PUT ROUTE *************');
+        console.log('Users updated', usersUpdated);
+        console.log('**************************************************');
+  
+        // redirect back to the profile page
+        res.redirect('/profile'); // route
+      }
+  } catch (error) {
+    console.log('*********************ERROR***********************');
+    console.log(error);
+    console.log('**************************************************');
+    res.render('edit');
+  }
+});
+
 
 // USE
 app.use('/inco-terms', require('./controllers/inco-terms'));
