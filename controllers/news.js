@@ -18,7 +18,6 @@ router.get('/:id', isLoggedIn, async (req, res) => {
     where: { id: req.params.id },
   })
   .then((news) => {
-    console.log('working');
     res.render('news/show', { news: news })
   })
   .catch((error) => {
@@ -49,7 +48,7 @@ router.post('/search', isLoggedIn, (req, res) => {
 // POST Route to add to Favorites
 router.post('/favorites', isLoggedIn, async (req, res) => {
   const date = new Date().toISOString();
-  console.log( 'hey', req.body );
+  console.log( req.body );
   const newNews = await db.news.create({
     title: req.body.title,
     summary: req.body.summary,
