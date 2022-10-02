@@ -5,7 +5,19 @@
   ### Simply SupplyChain is a fullstack web application, designed to help the users to learn about one of the fundamentals of international business terminologies, which is called Inco-Terms. Also, the users could be able to search live real-world news that they can find the relatable news and make notes and comments about how their selected news is related to the inco-terms.
 
 ## Installation
-  ### Installation is not required, web application.
+  ### Installation is not required, but if you would like to git clone please enter the below in the appropratie terminal
+
+  #### git clone https://github.com/AidenValley/Simply-INCO-TERMS
+  #### cd Simply-INCO-TERMS
+  #### npm install
+  #### touch .env
+  ##### (Inside of .env) SECRET_SESSION=alldayidreamaboutsoftwareengineering
+  ##### (Inside of .env) API_KEY=.... (please go to the API website for an access)
+  #### (Create a database) npm install sequelize-cl
+  #### (Create a database) npm sequelize-cli db:create simply-supply-chain
+  #### npx sequelize-cli db:migrate
+
+  ### npm start
 
 ## Hosted Website 
   ### https://simply-supplychain.herokuapp.com/
